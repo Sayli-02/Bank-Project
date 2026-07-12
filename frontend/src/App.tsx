@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ExecutiveDashboard } from './pages/ExecutiveDashboard';
+import { InsightsDashboard } from './pages/InsightsDashboard';
+import { ProductDashboard } from './pages/ProductDashboard';
+import { ChurnDashboard } from './pages/ChurnDashboard';
+import { ProfitabilityDashboard } from './pages/ProfitabilityDashboard';
+import { SegmentationExplorer } from './pages/SegmentationExplorer';
 import { 
-  InsightsDashboard, 
-  ProductDashboard, 
-  ChurnDashboard, 
-  ProfitabilityDashboard, 
-  SegmentationExplorer, 
   SqlExplorer 
 } from './pages/Stubs';
 import { DesignSystem } from './pages/DesignSystem';

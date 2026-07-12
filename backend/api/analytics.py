@@ -11,7 +11,9 @@ def refresh_cache():
     Must be called after an ETL pipeline run to ensure dashboards show fresh data.
     """
     stats.clear_cache()
-    return {"status": "success", "message": "Analytics cache cleared successfully."}
+    from services import segmentation
+    segmentation.clear_cache()
+    return {"status": "success", "message": "Analytics and segmentation caches cleared successfully."}
 
 @router.get("/correlations")
 def get_correlations() -> Dict[str, Any]:

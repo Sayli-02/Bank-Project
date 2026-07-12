@@ -16,11 +16,10 @@ export function DesignSystem() {
     { id: 4, name: 'Diana Prince', segment: <SegmentBadge segment="Dormant" />, balance: '$1,200' },
   ];
 
-  const columns = [
-    { key: 'id', header: 'ID', align: 'center' as const },
-    { key: 'name', header: 'Customer Name' },
-    { key: 'segment', header: 'Segment' },
-    { key: 'balance', header: 'Balance', align: 'right' as const },
+  const columns: Column[] = [
+    { accessor: 'id', header: 'ID' },
+    { accessor: 'name', header: 'Name' },
+    { accessor: 'value', header: 'Value', align: 'right' as const }
   ];
 
   return (
@@ -29,7 +28,10 @@ export function DesignSystem() {
         
         <section>
           <h3 className="text-xl font-serif text-accent-gold mb-4 border-b border-[rgba(255,255,255,0.06)] pb-2">1. Filter Bar</h3>
-          <FilterBar />
+          <FilterBar 
+            filters={{ geography: '', gender: '', card_type: '', age_band: '' }} 
+            onFilterChange={() => {}} 
+          />
         </section>
 
         <section>

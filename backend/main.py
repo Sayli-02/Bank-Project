@@ -32,6 +32,13 @@ def get_db():
     finally:
         db.close()
 
+@app.get("/")
+def read_root():
+    return {
+        "message": "Welcome to the Bank Churn Analytics API. This is just the backend data server! Please visit the frontend application (usually http://localhost:5173) to see the dashboards.",
+        "docs_url": "/docs"
+    }
+
 @app.get("/health")
 def health_check():
     return {"status": "ok", "message": "Backend is running and connected."}

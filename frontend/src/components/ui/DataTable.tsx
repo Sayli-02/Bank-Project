@@ -2,15 +2,17 @@ import React from 'react';
 import { cn } from '../../lib/utils';
 import { Download, ArrowUpDown, ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface Column {
-  key: string;
+export interface Column<T = any> {
   header: string;
+  accessor: keyof T;
+  sortable?: boolean;
   align?: 'left' | 'right' | 'center';
+  render?: (val: any, item: T) => React.ReactNode;
 }
 
-interface DataTableProps {
-  columns: Column[];
-  data: any[];
+interface DataTableProps<T = any> {
+  columns: Column<T>[];
+  data: T[];
   title?: string;
   className?: string;
 }
@@ -32,10 +34,10 @@ export function DataTable({ columns, data, title, className }: DataTableProps) {
           <thead>
             <tr className="bg-[#1a2436] border-b border-[rgba(255,255,255,0.06)]">
               {columns.map((col) => (
-                <th key={col.key} className={cn("px-4 py-3 text-xs font-sans text-neutral-300 uppercase tracking-wider font-medium cursor-pointer hover:text-white group", col.align === 'right' && 'text-right', col.align === 'center' && 'text-center')}>
+                <th key={String(col.accessor)} className={cn("px-4 py-3 text-xs font-sans text-neutral-300 uppercase tracking-wider font-medium cursor-pointer hover:text-white group", col.align === 'right' && 'text-right', col.align === 'center' && 'text-center')}>
                   <div className={cn("flex items-center", col.align === 'right' && 'justify-end', col.align === 'center' && 'justify-center')}>
                     {col.header}
-                    <ArrowUpDown size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {col.sortable && <ArrowUpDown size={12} className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />}
                   </div>
                 </th>
               ))}
@@ -52,8 +54,8 @@ export function DataTable({ columns, data, title, className }: DataTableProps) {
               data.map((row, idx) => (
                 <tr key={idx} className="hover:bg-[#1a2436]/50 transition-colors">
                   {columns.map((col) => (
-                    <td key={col.key} className={cn("px-4 py-3 text-sm font-sans text-neutral-200", col.align === 'right' && 'text-right', col.align === 'center' && 'text-center')}>
-                      {row[col.key]}
+                    <td key={String(col.accessor)} className={cn("px-4 py-3 text-sm font-sans text-neutral-200", col.align === 'right' && 'text-right', col.align === 'center' && 'text-center')}>
+                      {col.render ? col.render(row[col.accessor], row) : (row[col.accessor] as any)}
                     </td>
                   ))}
                 </tr>

@@ -118,7 +118,7 @@ export function ExecutiveDashboard() {
                   <YAxis stroke="#94A3B8" tick={{ fill: '#94A3B8' }} tickFormatter={(val) => `$${val/1000000}M`} />
                   <RechartsTooltip 
                     contentStyle={{ backgroundColor: '#161F2E', borderColor: 'rgba(255,255,255,0.1)', color: '#fff' }}
-                    formatter={(val: number) => [formatCurrency(val), 'Revenue at Risk']}
+                    formatter={(val: any) => [formatCurrency(val), 'Revenue at Risk']}
                   />
                   <Bar dataKey="value" fill="#C9A24B" radius={[4, 4, 0, 0]} barSize={40} />
                 </BarChart>
@@ -140,7 +140,7 @@ export function ExecutiveDashboard() {
                   <YAxis stroke="#94A3B8" tick={{ fill: '#94A3B8' }} domain={['dataMin - 2', 'dataMax + 2']} tickFormatter={(val) => `${val}%`} />
                   <RechartsTooltip 
                     contentStyle={{ backgroundColor: '#161F2E', borderColor: 'rgba(255,255,255,0.1)', color: '#fff' }}
-                    formatter={(val: number) => [`${val}%`, 'Churn Rate']}
+                    formatter={(val: any) => [`${val}%`, 'Churn Rate']}
                   />
                   <Line type="monotone" dataKey="rate" stroke="#D64545" strokeWidth={3} dot={{ fill: '#D64545', r: 4 }} activeDot={{ r: 6 }} />
                 </LineChart>
