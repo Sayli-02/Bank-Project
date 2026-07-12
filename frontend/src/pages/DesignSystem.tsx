@@ -5,6 +5,7 @@ import { ChartCard } from '../components/ui/ChartCard';
 import { InsightBanner } from '../components/ui/InsightBanner';
 import { SegmentBadge } from '../components/ui/SegmentBadge';
 import { DataTable } from '../components/ui/DataTable';
+import type { Column } from '../components/ui/DataTable';
 import { FilterBar } from '../components/ui/FilterBar';
 import { SkeletonLoader } from '../components/ui/SkeletonLoader';
 
