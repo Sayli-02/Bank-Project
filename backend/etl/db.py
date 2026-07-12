@@ -5,14 +5,16 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path="../../.env.example") # using example as fallback if .env is not present
 
+import os
+
+# Calculate absolute path to the root directory (where bank_churn.db lives)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DEFAULT_SQLITE_URL = f"sqlite:///{os.path.join(BASE_DIR, 'bank_churn.db')}"
+
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
-    # Fallback to local SQLite if DATABASE_URL is somehow missing
-    # Important: local SQLite URL format requires 3 slashes for relative path, 4 for absolute.
-    # postgresql:// is standard for postgres.
-    DATABASE_URL = "sqlite:///../bank_churn.db"
+    DATABASE_URL = DEFAULT_SQLITE_URL
 elif DATABASE_URL.startswith("postgres://"):
-    # SQLAlchemy 1.4+ requires postgresql:// instead of postgres://
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
     
 # If docker compose is not running locally, and it's set to localhost postgres, 
@@ -23,7 +25,7 @@ try:
     engine.connect().close()
 except Exception as e:
     print(f"Warning: Could not connect to {DATABASE_URL}. Falling back to SQLite for local dev. Error: {e}")
-    DATABASE_URL = "sqlite:///../bank_churn.db"
+    DATABASE_URL = DEFAULT_SQLITE_URL
     engine = create_engine(DATABASE_URL)
 
 
