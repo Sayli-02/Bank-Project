@@ -15,11 +15,11 @@ app = FastAPI(title="Bank Churn Analytics API")
 app.include_router(analytics.router)
 app.include_router(dashboard.router)
 
-# Configure CORS for Vite frontend
+# Configure CORS — allow all origins so Vercel frontend can reach the backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"], # Vite default ports
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
