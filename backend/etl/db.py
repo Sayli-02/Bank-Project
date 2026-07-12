@@ -46,7 +46,15 @@ class Customer(Base):
     card_type = Column(String)
     num_complaints = Column(Integer)
     digital_banking_usage = Column(Integer)
+    transaction_frequency = Column(Integer)
+    loan_repayment_status = Column(Integer)
     churned = Column(Integer)
+
+    # Engineered Features (Phase 2)
+    clv = Column(Float)
+    product_engagement_score = Column(Float)
+    financial_health_score = Column(Float)
+    customer_loyalty_score = Column(Float)
 
     # Adding indexes as requested for dashboards
     __table_args__ = (

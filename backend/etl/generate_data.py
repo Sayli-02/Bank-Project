@@ -24,6 +24,8 @@ def generate_synthetic_data(num_samples=10000, output_path='../data/raw_customer
     card_type = np.random.choice(['Silver', 'Gold', 'Platinum'], num_samples, p=[0.5, 0.3, 0.2])
     num_complaints = np.random.poisson(0.5, num_samples)
     digital_banking_usage = np.random.choice([0, 1], num_samples, p=[0.3, 0.7])
+    transaction_frequency = np.random.randint(0, 100, num_samples)
+    loan_repayment_status = np.random.choice([0, 1], num_samples, p=[0.1, 0.9]) # 0 = poor, 1 = good
 
     # Churn probability calculation based on multiple factors
     risk_score = np.zeros(num_samples)
@@ -65,6 +67,8 @@ def generate_synthetic_data(num_samples=10000, output_path='../data/raw_customer
         'card_type': card_type,
         'num_complaints': num_complaints,
         'digital_banking_usage': digital_banking_usage,
+        'transaction_frequency': transaction_frequency,
+        'loan_repayment_status': loan_repayment_status,
         'churned': churned
     })
 

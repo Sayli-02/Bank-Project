@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from etl.features import compute_features
 
 def clean_data(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """
@@ -51,6 +52,9 @@ def clean_data(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     
     # Same for income since we duplicated estimated_salary to income
     df.loc[df['income'] > salary_99, 'income'] = salary_99
+
+    # 6. Feature Engineering (Phase 2)
+    df = compute_features(df)
 
     metrics['final_rows'] = len(df)
 
