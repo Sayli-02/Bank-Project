@@ -76,7 +76,7 @@ export function SegmentationExplorer() {
       queryParams.append('page', page.toString());
       queryParams.append('limit', limit.toString());
 
-      const res = await fetch(`http://localhost:8000/api/dashboard/segmentation?${queryParams.toString()}`);
+      const res = await fetch(`/api/dashboard/segmentation?${queryParams.toString()}`);
       const segmentData = await res.json();
       setData(segmentData);
     } catch (err) {

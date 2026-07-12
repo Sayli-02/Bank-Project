@@ -56,7 +56,7 @@ export function ChurnDashboard() {
         if (filters.card_type) queryParams.append('card_type', filters.card_type);
         if (filters.age_band) queryParams.append('age_band', filters.age_band);
 
-        const res = await fetch(`http://localhost:8000/api/dashboard/churn?${queryParams.toString()}`);
+        const res = await fetch(`/api/dashboard/churn?${queryParams.toString()}`);
         const churnData = await res.json();
         setData(churnData);
       } catch (err) {

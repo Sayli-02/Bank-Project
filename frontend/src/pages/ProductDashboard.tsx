@@ -55,7 +55,7 @@ export function ProductDashboard() {
         if (filters.card_type) queryParams.append('card_type', filters.card_type);
         if (filters.age_band) queryParams.append('age_band', filters.age_band);
 
-        const res = await fetch(`http://localhost:8000/api/dashboard/product?${queryParams.toString()}`);
+        const res = await fetch(`/api/dashboard/product?${queryParams.toString()}`);
         const productData = await res.json();
         setData(productData);
       } catch (err) {

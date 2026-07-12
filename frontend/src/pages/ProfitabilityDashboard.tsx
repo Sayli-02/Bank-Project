@@ -72,7 +72,7 @@ export function ProfitabilityDashboard() {
         if (filters.card_type) queryParams.append('card_type', filters.card_type);
         if (filters.age_band) queryParams.append('age_band', filters.age_band);
 
-        const res = await fetch(`http://localhost:8000/api/dashboard/profitability?${queryParams.toString()}`);
+        const res = await fetch(`/api/dashboard/profitability?${queryParams.toString()}`);
         const profData = await res.json();
         setData(profData);
       } catch (err) {

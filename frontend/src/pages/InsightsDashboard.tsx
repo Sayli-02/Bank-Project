@@ -47,7 +47,7 @@ export function InsightsDashboard() {
         if (filters.card_type) queryParams.append('card_type', filters.card_type);
         if (filters.age_band) queryParams.append('age_band', filters.age_band);
 
-        const res = await fetch(`http://localhost:8000/api/dashboard/insights?${queryParams.toString()}`);
+        const res = await fetch(`/api/dashboard/insights?${queryParams.toString()}`);
         const dashData = await res.json();
         setData(dashData);
       } catch (err) {

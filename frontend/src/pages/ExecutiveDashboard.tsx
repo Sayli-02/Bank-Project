@@ -36,8 +36,8 @@ export function ExecutiveDashboard() {
     async function fetchData() {
       try {
         const [dashRes, insightRes] = await Promise.all([
-          fetch('http://localhost:8000/api/dashboard/executive'),
-          fetch('http://localhost:8000/api/analytics/logistic-regression')
+          fetch('/api/dashboard/executive'),
+          fetch('/api/analytics/logistic-regression')
         ]);
         
         const dashData = await dashRes.json();
