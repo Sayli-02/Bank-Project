@@ -1,16 +1,6 @@
 import React from 'react';
 import { Layout } from '../components/layout/Layout';
 
-export function ExecutiveDashboard() {
-  return (
-    <Layout title="Executive Dashboard">
-      <div className="flex items-center justify-center h-[60vh] text-neutral-400 font-sans">
-        <p>Executive Dashboard Content (Stubbed for Phase 5)</p>
-      </div>
-    </Layout>
-  );
-}
-
 export function InsightsDashboard() {
   return (
     <Layout title="Customer Insights">

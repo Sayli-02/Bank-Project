@@ -7,12 +7,13 @@ from dotenv import load_dotenv
 from etl.db import SessionLocal, Customer
 from sqlalchemy.orm import Session
 
-from api import analytics
+from api import analytics, dashboard
 
 load_dotenv(dotenv_path="../.env.example") # Fallback to .env.example for demo if .env doesn't exist
 
 app = FastAPI(title="Bank Churn Analytics API")
 app.include_router(analytics.router)
+app.include_router(dashboard.router)
 
 # Configure CORS for Vite frontend
 app.add_middleware(

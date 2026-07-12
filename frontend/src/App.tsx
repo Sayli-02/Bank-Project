@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ExecutiveDashboard } from './pages/ExecutiveDashboard';
 import { 
-  ExecutiveDashboard, 
   InsightsDashboard, 
   ProductDashboard, 
   ChurnDashboard, 
