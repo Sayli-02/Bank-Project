@@ -1,9 +1,48 @@
-/* Design tokens placeholder for Phase 4 */
-:root {
-  /* Colors */
-  --color-base-navy: #0B1220;
-  --color-surface-dark: #161F2E;
-  --color-accent-gold: #C9A24B;
-  --color-accent-emerald: #2FBF71;
-  --color-accent-crimson: #D64545;
+@layer base {
+  :root {
+    /* Base Colors - Dark Theme (Default) */
+    --color-base-navy: #0B1220;
+    --color-surface-dark: #161F2E;
+    
+    /* Accents */
+    --color-accent-gold: #C9A24B;
+    --color-accent-emerald: #2FBF71;
+    --color-accent-crimson: #D64545;
+    
+    /* Neutrals (5-step grayscale) */
+    --color-neutral-100: #FFFFFF;
+    --color-neutral-200: #E2E8F0;
+    --color-neutral-300: #94A3B8;
+    --color-neutral-400: #475569;
+    --color-neutral-500: #1E293B;
+    
+    /* Functional */
+    --color-text-main: var(--color-neutral-100);
+    --color-text-muted: var(--color-neutral-300);
+    --color-border: rgba(255, 255, 255, 0.06);
+  }
+
+  .light-theme {
+    /* Base Colors - Light Theme */
+    --color-base-navy: #F8FAFC;
+    --color-surface-dark: #FFFFFF;
+    
+    /* Accents remain the same for brand consistency */
+    --color-accent-gold: #C9A24B;
+    --color-accent-emerald: #15803d; /* slightly darker for contrast on light */
+    --color-accent-crimson: #b91c1c; /* slightly darker for contrast on light */
+    
+    /* Neutrals (inverted for light mode) */
+    --color-neutral-100: #0F172A;
+    --color-neutral-200: #334155;
+    --color-neutral-300: #64748B;
+    --color-neutral-400: #CBD5E1;
+    --color-neutral-500: #F1F5F9;
+    
+    /* Functional */
+    --color-text-main: var(--color-neutral-100);
+    --color-text-muted: var(--color-neutral-300);
+    --color-border: rgba(0, 0, 0, 0.06);
+  }
 }
+

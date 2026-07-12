@@ -7,6 +7,6 @@
 body {
   margin: 0;
   background-color: var(--color-base-navy);
-  color: white;
+  color: var(--color-text-main);
   font-family: 'Inter', sans-serif;
 }
